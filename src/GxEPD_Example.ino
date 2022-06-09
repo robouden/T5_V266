@@ -53,10 +53,6 @@ bool setupSDCard(void)
 }
 
 
-void testSpeaker()
-{
-}
-
 void testWiFi()
 {
     WiFi.mode(WIFI_STA);
@@ -94,8 +90,6 @@ void setup()
     display.init();
     display.setTextColor(GxEPD_BLACK);
 
-    testSpeaker();
-
     testWiFi();
 
     rlst = setupSDCard();
@@ -119,8 +113,6 @@ void setup()
 
 void loop()
 {
-    drawCornerTest();
-
     int i = 0;
     while (i < 4) {
         display.setRotation(i);
@@ -129,15 +121,10 @@ void loop()
         //showFont("FreeMonoBold24pt7b", &FreeMonoBold24pt7b);
         i++;
     }
-
     display.fillScreen(GxEPD_WHITE);
-
     display.update();
-
     display.powerDown();
-
     esp_sleep_enable_ext1_wakeup(((uint64_t)(((uint64_t)1) << BUTTON_1)), ESP_EXT1_WAKEUP_ALL_LOW);
-
     esp_deep_sleep_start();
 
 }
@@ -159,22 +146,3 @@ void showFont(const char name[], const GFXfont *f)
     display.update();
     delay(5000);
 }
-
-void drawCornerTest()
-{
-    display.drawCornerTest();
-    delay(5000);
-    uint8_t rotation = display.getRotation();
-    for (uint16_t r = 0; r < 4; r++) {
-        display.setRotation(r);
-        display.fillScreen(GxEPD_WHITE);
-        display.fillRect(0, 0, 8, 8, GxEPD_BLACK);
-        display.fillRect(display.width() - 18, 0, 16, 16, GxEPD_BLACK);
-        display.fillRect(display.width() - 25, display.height() - 25, 24, 24, GxEPD_BLACK);
-        display.fillRect(0, display.height() - 33, 32, 32, GxEPD_BLACK);
-        display.update();
-        delay(5000);
-    }
-    display.setRotation(rotation); // restore
-}
-
