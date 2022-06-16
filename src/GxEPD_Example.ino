@@ -95,9 +95,13 @@ void setup()
     rlst = setupSDCard();
     display.setRotation(0);
     display.fillScreen(GxEPD_WHITE);
+
+    // display LiliGo logo
     display.drawExampleBitmap(BitmapExample1, 0, 0, GxEPD_WIDTH, GxEPD_HEIGHT, GxEPD_BLACK);
     display.setRotation(1);
     display.setCursor(20, display.height() - 15);
+
+    //Dsiaply test 1
     String sizeString = "SD:" + String(SD.cardSize() / 1024.0 / 1024.0 / 1024.0) + "G";
     display.println(rlst ? sizeString : "SD:N/A");
     int16_t x1, x2;
@@ -117,8 +121,8 @@ void loop()
     while (i < 4) {
         display.setRotation(i);
         showFont("FreeMonoBold9pt7b", &FreeMonoBold9pt7b);
-        //showFont("FreeMonoBold18pt7b", &FreeMonoBold18pt7b);
-        //showFont("FreeMonoBold24pt7b", &FreeMonoBold24pt7b);
+        showFont("FreeMonoBold18pt7b", &FreeMonoBold18pt7b);
+        showFont("FreeMonoBold24pt7b", &FreeMonoBold24pt7b);
         i++;
     }
     display.fillScreen(GxEPD_WHITE);
