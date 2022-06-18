@@ -101,7 +101,7 @@ void setup()
     display.setRotation(1);
     display.setCursor(20, display.height() - 15);
 
-    //Dsiaply test 1
+    // display test 1
     String sizeString = "SD:" + String(SD.cardSize() / 1024.0 / 1024.0 / 1024.0) + "G";
     display.println(rlst ? sizeString : "SD:N/A");
     int16_t x1, x2;
