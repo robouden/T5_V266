@@ -61,7 +61,7 @@ void testWiFi()
     int n = WiFi.scanNetworks();
     Serial.println("scan done");
     if (n == 0) {
-        Serial.println("no networks found");
+        Serial.println("no networks found error");
     } else {
         Serial.print(n);
         Serial.println(" networks found");
