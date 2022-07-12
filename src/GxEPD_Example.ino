@@ -112,7 +112,7 @@ void setup()
     display.setCursor(display.width() - w - 5, display.height() - 15);
     display.println(str);
     display.update();
-    delay(1000);
+    delay(500);
 }
 
 void loop()
